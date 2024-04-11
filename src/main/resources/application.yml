@@ -21,7 +21,7 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.103.119.75:3306/ai_charts
+    url: jdbc:mysql://47.103.119.75:3306/xoj_backend
     username: root
     password: 200424zlx
   # Redis 配置

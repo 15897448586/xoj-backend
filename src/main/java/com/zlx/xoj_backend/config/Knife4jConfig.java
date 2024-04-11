@@ -31,7 +31,7 @@ public class Knife4jConfig {
                         .build())
                 .select()
                 // 指定 Controller 扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.zlx.ai_charts.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zlx.xoj_backend.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

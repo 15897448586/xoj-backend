@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author zlx
  */
 @Configuration
-@MapperScan("com.zlx.ai_charts.mapper")
+@MapperScan("com.zlx.xoj_backend.mapper")
 public class MyBatisPlusConfig {
 
     /**
