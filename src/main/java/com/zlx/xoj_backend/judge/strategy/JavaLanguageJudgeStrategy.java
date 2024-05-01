@@ -3,7 +3,7 @@ package com.zlx.xoj_backend.judge.strategy;
 import cn.hutool.json.JSONUtil;
 import com.zlx.xoj_backend.model.dto.question.JudgeCase;
 import com.zlx.xoj_backend.model.dto.question.JudgeConfig;
-import com.zlx.xoj_backend.model.dto.questionsubmit.JudgeInfo;
+import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.entity.Question;
 import com.zlx.xoj_backend.model.enums.JudgeInfoMessageEnum;
 

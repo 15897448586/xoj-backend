@@ -3,7 +3,7 @@ package com.zlx.xoj_backend.judge.codesandbox.impl;
 import com.zlx.xoj_backend.judge.codesandbox.CodeSandbox;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeRequest;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeResponse;
-import com.zlx.xoj_backend.model.dto.questionsubmit.JudgeInfo;
+import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.enums.JudgeInfoMessageEnum;
 import com.zlx.xoj_backend.model.enums.QuestionSubmitStatusEnum;
 import lombok.extern.slf4j.Slf4j;

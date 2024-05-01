@@ -1,6 +1,6 @@
 package com.zlx.xoj_backend.judge.strategy;
 
-import com.zlx.xoj_backend.model.dto.questionsubmit.JudgeInfo;
+import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 
 /**
  * @Author zlx

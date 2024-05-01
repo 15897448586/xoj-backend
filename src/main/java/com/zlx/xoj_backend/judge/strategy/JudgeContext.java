@@ -1,7 +1,7 @@
 package com.zlx.xoj_backend.judge.strategy;
 
 import com.zlx.xoj_backend.model.dto.question.JudgeCase;
-import com.zlx.xoj_backend.model.dto.questionsubmit.JudgeInfo;
+import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.entity.Question;
 import com.zlx.xoj_backend.model.entity.QuestionSubmit;
 import lombok.Data;

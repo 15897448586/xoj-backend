@@ -10,7 +10,7 @@ import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeRequest;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeResponse;
 import com.zlx.xoj_backend.judge.strategy.JudgeContext;
 import com.zlx.xoj_backend.model.dto.question.JudgeCase;
-import com.zlx.xoj_backend.model.dto.questionsubmit.JudgeInfo;
+import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.entity.Question;
 import com.zlx.xoj_backend.model.entity.QuestionSubmit;
 import com.zlx.xoj_backend.model.enums.QuestionSubmitStatusEnum;
