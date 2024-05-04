@@ -4,6 +4,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import cn.hutool.core.util.StrUtil;
 import com.zlx.xoj_backend.model.entity.User;
 import com.zlx.xoj_backend.service.UserService;
 import com.zlx.xoj_backend.utils.UserHolder;
@@ -53,6 +54,11 @@ public class LogInterceptor {
         // 输出请求日志
         log.info("request start，id: {}, path: {}, ip: {}, params: {}", requestId, url,
                 httpServletRequest.getRemoteHost(), reqParam);
+        String methodName = point.getSignature().getName();
+        if (StrUtil.equalsAny(methodName,"userRegister","userLogin")) {
+            // 如果是要排除的方法，则直接执行原方法
+            return point.proceed();
+        }
         User loginUser = userService.getLoginUser(httpServletRequest);
         UserHolder.saveUser(loginUser);
 
