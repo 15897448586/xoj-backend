@@ -3,11 +3,13 @@ package com.zlx.xoj_backend.judge.codesandbox.impl;
 import com.zlx.xoj_backend.judge.codesandbox.CodeSandbox;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeRequest;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeResponse;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author zlx
  * @Date 2024/4/26 14:46
  */
+@Component
 public class ThirdPartyCodeSandbox implements CodeSandbox {
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {

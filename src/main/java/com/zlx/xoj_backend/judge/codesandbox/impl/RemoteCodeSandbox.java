@@ -8,12 +8,20 @@ import com.zlx.xoj_backend.exception.BusinessException;
 import com.zlx.xoj_backend.judge.codesandbox.CodeSandbox;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeRequest;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeResponse;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author zlx
  * @Date 2024/4/26 14:45
  */
+@Component
 public class RemoteCodeSandbox implements CodeSandbox {
+
+    @Value("${code-sandbox.url}")
+    private String codeSandboxUrl;
+    @Value("${code-sandbox.port}")
+    private String codeSandboxPort;
 
     private static final String AUTH_REQUEST_HEADER = "accessKey";
 
@@ -21,7 +29,7 @@ public class RemoteCodeSandbox implements CodeSandbox {
 
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
-        String url = "http://localhost:8103/executeCode";
+        String url = "http://"+ codeSandboxUrl +":"+codeSandboxPort+"/executeCode";
         String json = JSONUtil.toJsonStr(executeCodeRequest);
         String responseStr = HttpUtil.createPost(url)
                 .header(AUTH_REQUEST_HEADER, AUTH_REQUEST_SECRET)

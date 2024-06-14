@@ -9,6 +9,7 @@ import com.zlx.xoj_backend.judge.codesandbox.CodeSandboxProxy;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeRequest;
 import com.zlx.xoj_backend.judge.codesandbox.model.ExecuteCodeResponse;
 import com.zlx.xoj_backend.judge.strategy.JudgeContext;
+import com.zlx.xoj_backend.mapper.QuestionMapper;
 import com.zlx.xoj_backend.model.dto.question.JudgeCase;
 import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.entity.Question;
@@ -42,6 +43,8 @@ public class JudgeServiceImpl implements JudgeService {
     @Value("${codesandbox.type:example}")
     private String type;
 
+    @Resource
+    private CodeSandboxFactory codeSandboxFactory;
 
     @Override
     public QuestionSubmit doJudge(long questionSubmitId) {
@@ -67,8 +70,12 @@ public class JudgeServiceImpl implements JudgeService {
         if (!update) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "题目状态更新错误");
         }
+        update = questionService.update().setSql("submitNum = submitNum + 1").eq("id", question.getId()).update();
+        if (!update) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数量更新错误");
+        }
         // 4）调用沙箱，获取到执行结果
-        CodeSandbox codeSandbox = CodeSandboxFactory.newInstance(type);
+        CodeSandbox codeSandbox = codeSandboxFactory.newInstance(type);
         codeSandbox = new CodeSandboxProxy(codeSandbox);
         String language = questionSubmit.getLanguage();
         String code = questionSubmit.getCode();
@@ -100,6 +107,10 @@ public class JudgeServiceImpl implements JudgeService {
         update = questionSubmitService.updateById(questionSubmitUpdate);
         if (!update) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "题目状态更新错误");
+        }
+        update = questionService.update().setSql("acceptedNum = acceptedNum + 1").eq("id", question.getId()).update();
+        if (!update) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数量更新错误");
         }
         QuestionSubmit questionSubmitResult = questionSubmitService.getById(questionId);
         return questionSubmitResult;

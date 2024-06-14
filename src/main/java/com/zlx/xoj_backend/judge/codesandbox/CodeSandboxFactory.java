@@ -3,30 +3,39 @@ package com.zlx.xoj_backend.judge.codesandbox;
 import com.zlx.xoj_backend.judge.codesandbox.impl.ExampleCodeSandbox;
 import com.zlx.xoj_backend.judge.codesandbox.impl.RemoteCodeSandbox;
 import com.zlx.xoj_backend.judge.codesandbox.impl.ThirdPartyCodeSandbox;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @Author zlx
  * @Date 2024/4/26 14:41
  */
+@Component
 public class CodeSandboxFactory {
 
+    @Resource
+    private ExampleCodeSandbox exampleCodeSandbox;
+    @Resource
+    private RemoteCodeSandbox remoteCodeSandbox;
+    @Resource
+    private ThirdPartyCodeSandbox thirdPartyCodeSandbox;
     /**
      * 创建代码沙箱示例
      *
      * @param type 沙箱类型
      * @return
      */
-    public static CodeSandbox newInstance(String type) {
+    public CodeSandbox newInstance(String type) {
         switch (type) {
             case "example":
-                return new ExampleCodeSandbox();
+                return exampleCodeSandbox;
             case "remote":
-                return new RemoteCodeSandbox();
+                return remoteCodeSandbox;
             case "thirdParty":
-                return new ThirdPartyCodeSandbox();
+                return thirdPartyCodeSandbox;
             default:
-                return new ExampleCodeSandbox();
+                return exampleCodeSandbox;
         }
     }
 }
-

@@ -94,3 +94,7 @@ cos:
 codesandbox:
   type: remote
 
+code-sandbox:
+  url: 47.103.119.75
+  port: 8110
+

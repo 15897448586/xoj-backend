@@ -7,6 +7,7 @@ import com.zlx.xoj_backend.judge.codesandbox.model.JudgeInfo;
 import com.zlx.xoj_backend.model.enums.JudgeInfoMessageEnum;
 import com.zlx.xoj_backend.model.enums.QuestionSubmitStatusEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @Date 2024/4/26 14:44
  */
 @Slf4j
+@Component
 public class ExampleCodeSandbox implements CodeSandbox {
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
